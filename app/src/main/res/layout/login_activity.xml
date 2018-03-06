@@ -1,70 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    android:theme="@style/AppTheme.NoToolbar"
-    android:layout_height="match_parent">
+    android:theme="@style/AppTheme.NoToolbar">
 
+    <FrameLayout
+        android:id="@+id/frameLoginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <LinearLayout
+        android:id="@+id/loginLinearLay"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="2">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="center"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/lock_icon_login_screen"/>
-        <TextView
-            android:text="@string/app_name"
-            android:gravity="center"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif"
-            android:textSize="30sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/fingerprint_login_btn"
-            android:layout_marginTop="20dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_above="@id/account_login_btn"
-            android:layout_marginLeft="30dp"
-            android:text="Login by fingerprint"
-            android:background="@drawable/login_button_background"
-            android:layout_marginRight="30dp"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/account_login_btn"
-            android:layout_marginTop="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:scaleType="center"
+                android:src="@mipmap/lock_icon_login_screen" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_above="@id/about_info"
-            android:background="@drawable/login_button_background"
-            android:layout_marginBottom="20dp"
-            android:text="Login by account"
-            android:layout_marginRight="30dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/about_info"
-            android:gravity="center"
-            android:textColor="#fff"
-            android:text="Copyright | Quan A.Ha"
-            android:layout_width="match_parent"
-            android:textSize="13sp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/fingerprint_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/account_login_btn"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login_button_background"
+                android:text="Login by fingerprint" />
+
+            <Button
+                android:id="@+id/account_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/about_info"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login_button_background"
+                android:text="Login by account" />
+
+            <TextView
+                android:id="@+id/about_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="Copyright | Quan A.Ha"
+                android:textColor="#fff"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

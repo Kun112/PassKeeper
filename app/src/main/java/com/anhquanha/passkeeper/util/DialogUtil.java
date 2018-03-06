@@ -16,18 +16,6 @@ import com.anhquanha.passkeeper.R;
 
 public class DialogUtil {
     private static Dialog progressDialog;
-    //private static DialogUtil dialogUtil;
-
-//    private DialogUtil(Context context){
-//        progressDialog = new Dialog(context);
-//    }
-//
-//    public static DialogUtil getInstance(Context context){
-//        if(dialogUtil == null){
-//            dialogUtil = new DialogUtil(context);
-//        }
-//        return dialogUtil;
-//    }
 
     public static void showProgressDialog(Context context){
         if(progressDialog != null && progressDialog.isShowing())
