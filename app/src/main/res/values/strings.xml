@@ -2,4 +2,10 @@
     <string name="app_name">PassKeeper</string>
     <string name="welcome_text">Welcome to PassKeeper</string>
     <string name="login">Login</string>
+    <string name="user_name_hint">User name</string>
+    <string name="id_hint">ID</string>
+    <string name="password_hint">Password</string>
+    <string name="create_new_account_text"><u>Not have an account yet? Create one!</u></string>
+    <string name="blank_id_error">The id field can not be blank.</string>
+    <string name="blank_pass_error">The password field can not be blank.</string>
 </resources>
