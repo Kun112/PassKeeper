@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PassKeeper</string>
+    <string name="welcome_text">Welcome to PassKeeper</string>
 </resources>
