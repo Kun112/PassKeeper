@@ -66,7 +66,12 @@ public class LoginActivity extends AppCompatActivity {
 
     public void popPreviousFragment(){
         FragmentManager fm = getSupportFragmentManager();
-        if(fm.getBackStackEntryCount()>0)
+        if(fm.getBackStackEntryCount()>0) {
             fm.popBackStack();
+        }else{
+            frameLayout.setVisibility(View.INVISIBLE);
+            startingLoginlayout.setVisibility(View.VISIBLE);
+        }
+
     }
 }
