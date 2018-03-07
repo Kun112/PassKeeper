@@ -1,8 +1,12 @@
 package com.anhquanha.passkeeper.asset;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.anhquanha.passkeeper.model.Account;
+import com.anhquanha.passkeeper.model.User;
 
 /**
  * Created by anhquan.ha on 3/7/2018.
@@ -66,4 +70,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+
+    public void createUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USER_ID_KEY, user.getId());
+        values.put(USER_NAME_KEY, user.getUsername());
+        values.put(USER_PASS_KEY, user.getPassword());
+
+        //insert
+        db.insert(USER_TABLE, null, values);
+        db.close();
+    }
+
+    public void createAccount(Account account){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(ACCOUNT_ID_KEY, account.getId());
+        values.put(ACCOUNT_LOGINID_KEY, account.getLoginId());
+        values.put(ACCOUNT_PASS_KEY, account.getPassword());
+        values.put(ACCOUNT_CATEGORY_KEY, account.getCategory());
+        values.put(ACCOUNT_OWNERID_KEY, account.getOwnerId());
+        values.put(ACCOUNT_CREATEAT_KEY, account.getCreatedAt());
+
+        db.insert(ACCOUNT_TABLE, null, values);
+        db.close();
+    }
+
+
 }
