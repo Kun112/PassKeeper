@@ -67,6 +67,16 @@ public class LoginFragment extends BaseFragment{
 
         });
 
+        createAccountTv.setOnClickListener(v->{
+            createNewAccount();
+        });
+
+
+    }
+
+    private void createNewAccount() {
+        if(context instanceof LoginActivity)
+            ((LoginActivity) context).pushLoginFragment(CreateUserFragment.newInstance());
     }
 
     @Override

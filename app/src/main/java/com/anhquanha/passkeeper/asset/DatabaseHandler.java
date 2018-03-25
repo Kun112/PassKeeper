@@ -2,9 +2,12 @@ package com.anhquanha.passkeeper.asset;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import com.anhquanha.passkeeper.constant.Const;
 import com.anhquanha.passkeeper.model.Account;
 import com.anhquanha.passkeeper.model.User;
 
@@ -37,9 +40,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ACCOUNT_OWNERID_KEY = "ownerId";
     private static final String ACCOUNT_CREATEAT_KEY = "createdAt";
 
+    Context context;
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -58,6 +64,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_ACCOUNT_TABLE);
+        Log.d(Const.APP_NAME, "Create table successfully!");
 
     }
 
@@ -66,9 +73,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + ACCOUNT_TABLE);
-
+        Log.d(Const.APP_NAME, "Drop table successfully!");
         // Create tables again
         onCreate(db);
+
     }
 
     public void createUser(User user){
@@ -82,6 +90,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //insert
         db.insert(USER_TABLE, null, values);
         db.close();
+    }
+
+    public User getUser(String idUser){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(USER_TABLE, null, USER_ID_KEY+ " = ?", new String[] { String.valueOf(idUser) },null, null, null);
+
+        if(cursor != null) {
+            cursor.moveToFirst();
+        }else{
+            return null;
+        }
+        User student = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+        db.close();
+        return student;
+    }
+
+    public boolean checkExistUser(String idUser){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        String checkQuery = "SELECT " + USER_ID_KEY + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '"+ idUser + "'";
+        cursor= db.rawQuery(checkQuery,null);
+        boolean exists = (cursor.getCount() > 0);
+        cursor.close();
+        db.close();
+        return exists;
     }
 
     public void createAccount(Account account){
@@ -98,6 +133,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(ACCOUNT_TABLE, null, values);
         db.close();
     }
+
+
 
 
 }

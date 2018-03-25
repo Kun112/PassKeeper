@@ -56,4 +56,8 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
         Toast.makeText(context, mess, Toast.LENGTH_SHORT).show();
     }
 
+    public void pushFragment(){
+
+    }
+
 }

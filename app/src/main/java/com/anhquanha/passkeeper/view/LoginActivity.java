@@ -10,8 +10,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.anhquanha.passkeeper.R;
+import com.anhquanha.passkeeper.asset.DatabaseHandler;
 import com.anhquanha.passkeeper.util.DialogUtil;
 import com.anhquanha.passkeeper.view.fragment.BaseFragment;
+import com.anhquanha.passkeeper.view.fragment.CreateUserFragment;
 import com.anhquanha.passkeeper.view.fragment.LoginFragment;
 
 import butterknife.BindView;
@@ -28,15 +30,19 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.loginLinearLay)
     LinearLayout startingLoginlayout;
 
+    DatabaseHandler databaseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
 
+        databaseHandler = new DatabaseHandler(this);
         accountLoginBtn.setOnClickListener(v->{
             startingLoginlayout.setVisibility(View.INVISIBLE);
-            openLoginScreen();
+            //openLoginScreen();
+            pushLoginFragment(LoginFragment.newInstance());
             frameLayout.setVisibility(View.VISIBLE);
         });
 
@@ -44,15 +50,16 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
+    
 
-    private void openLoginScreen() {
+    public void pushLoginFragment(BaseFragment baseFragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        BaseFragment fragment = LoginFragment.newInstance();
-        ft.replace(R.id.frameLoginLayout, fragment, null);
+        ft.replace(R.id.frameLoginLayout, baseFragment, null);
 
         ft.commitAllowingStateLoss();
+
     }
 
     @Override
@@ -74,4 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
