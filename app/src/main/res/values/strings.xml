@@ -12,4 +12,8 @@
     <string name="not_corresponding_pass">Your confirmation password must be the same as your password</string>
     <string name="used_account_error">This user is already created. Please choose a new id!</string>
     <string name="create_user_success">Create user successfully!</string>
+    <string name="not_valid_user">The id or password is not correct. Please try again!</string>
+    <string name="blank_error">This field can not be blank!</string>
+    <string name="my_account">Accounts</string>
+    <string name="setting_tab">Settings</string>
 </resources>

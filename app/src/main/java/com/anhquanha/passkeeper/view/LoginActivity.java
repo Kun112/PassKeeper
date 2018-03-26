@@ -11,9 +11,7 @@ import android.widget.LinearLayout;
 
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
-import com.anhquanha.passkeeper.util.DialogUtil;
 import com.anhquanha.passkeeper.view.fragment.BaseFragment;
-import com.anhquanha.passkeeper.view.fragment.CreateUserFragment;
 import com.anhquanha.passkeeper.view.fragment.LoginFragment;
 
 import butterknife.BindView;
@@ -42,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         accountLoginBtn.setOnClickListener(v->{
             startingLoginlayout.setVisibility(View.INVISIBLE);
             //openLoginScreen();
-            pushLoginFragment(LoginFragment.newInstance());
+            pushFragment(LoginFragment.newInstance(), false);
             frameLayout.setVisibility(View.VISIBLE);
         });
 
@@ -50,13 +48,16 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
-    
 
-    public void pushLoginFragment(BaseFragment baseFragment){
+
+    public void pushFragment(BaseFragment baseFragment, boolean addBackStack){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
         ft.replace(R.id.frameLoginLayout, baseFragment, null);
+
+        if(addBackStack)
+            ft.addToBackStack(baseFragment.getFragmentTag());
 
         ft.commitAllowingStateLoss();
 

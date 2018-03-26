@@ -107,6 +107,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return student;
     }
 
+
     public boolean checkExistUser(String idUser){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -135,6 +136,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public User getSinlgeEntry(String userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String checkQuery = "SELECT " + "*" + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '"+ userId + "'";
+        Cursor cursor = null;
+        cursor= db.rawQuery(checkQuery,null);
+        if (cursor.getCount() < 1) // UserName Not Exist
+        {
+            return null;
+        }else{
+            cursor.moveToFirst();
+            //String password = cursor.getString(cursor.getColumnIndex(USER_PASS_KEY));
+            String password = cursor.getString(2);
+            String userName = cursor.getString(1);
+            cursor.close();
+            return new User(userId, userName, password);
 
+        }
+
+    }
 
 }

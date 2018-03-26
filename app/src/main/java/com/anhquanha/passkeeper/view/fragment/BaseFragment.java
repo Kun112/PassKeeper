@@ -60,4 +60,5 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
 
     }
 
+    public abstract String getFragmentTag();
 }

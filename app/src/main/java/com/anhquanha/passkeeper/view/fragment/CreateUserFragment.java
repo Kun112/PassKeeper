@@ -85,13 +85,13 @@ public class CreateUserFragment extends BaseFragment {
         /** check if any field is blank */
         if(userName.equals("") || idUser.equals("") || password.equals("") || confirmPassword.equals("")){
             if(userName.equals(""))
-                userNameTv.setError(context.getResources().getString(R.string.blank_id_error));
+                userNameTv.setError(context.getResources().getString(R.string.blank_error));
             if(idUser.equals(""))
-                idUserTv.setError(context.getResources().getString(R.string.blank_id_error));
+                idUserTv.setError(context.getResources().getString(R.string.blank_error));
             if(password.equals(""))
-                passwordTv.setError(context.getResources().getString(R.string.blank_id_error));
+                passwordTv.setError(context.getResources().getString(R.string.blank_error));
             if(confirmPassword.equals(""))
-                confirmPassTv.setError(context.getResources().getString(R.string.blank_id_error));
+                confirmPassTv.setError(context.getResources().getString(R.string.blank_error));
             return false;
         }
         /** check if passwords is not match **/
@@ -111,5 +111,10 @@ public class CreateUserFragment extends BaseFragment {
     @Override
     public void changeToolbarTitle() {
         fragmentNameTv.setText("Create account");
+    }
+
+    @Override
+    public String getFragmentTag() {
+        return "CREATE_USER_FRAGMENT";
     }
 }
