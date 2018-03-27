@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
+import com.anhquanha.passkeeper.constant.FragmentID;
 import com.anhquanha.passkeeper.model.User;
 import com.anhquanha.passkeeper.view.LoginActivity;
 
@@ -115,6 +116,6 @@ public class CreateUserFragment extends BaseFragment {
 
     @Override
     public String getFragmentTag() {
-        return "CREATE_USER_FRAGMENT";
+        return FragmentID.CREATE_USER_FRAGMENT;
     }
 }

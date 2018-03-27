@@ -32,11 +32,12 @@ public class BaseActivity extends AppCompatActivity {
             frameLayout.setVisibility(View.INVISIBLE);
             linearLayout.setVisibility(View.VISIBLE);
         }
-
     }
 
     public void setLayout(LinearLayout linearLayout, FrameLayout frameLayout){
         this.frameLayout = frameLayout;
         this.linearLayout = linearLayout;
     }
+
+
 }

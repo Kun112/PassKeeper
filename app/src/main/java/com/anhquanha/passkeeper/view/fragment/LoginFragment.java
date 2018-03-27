@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
+import com.anhquanha.passkeeper.constant.FragmentID;
 import com.anhquanha.passkeeper.model.User;
 import com.anhquanha.passkeeper.view.LoginActivity;
 import com.anhquanha.passkeeper.view.MainActivity;
@@ -119,7 +120,7 @@ public class LoginFragment extends BaseFragment{
 
     @Override
     public String getFragmentTag() {
-        return "LOGIN_FRAGMENT";
+        return FragmentID.LOGIN_FRAGMENT;
     }
 
 
