@@ -1,4 +1,4 @@
-package com.anhquanha.passkeeper.view;
+package com.anhquanha.passkeeper.view.activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -49,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.nav_accounts:
-
+                    pushFragment(accountsFragment, false);
                     break;
                 case R.id.nav_settings:
+                    pushFragment(settingFragment, false);
                     break;
             }
             return true;

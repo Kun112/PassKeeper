@@ -1,6 +1,7 @@
 package com.anhquanha.passkeeper;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.anhquanha.passkeeper.model.User;
 
@@ -10,11 +11,12 @@ import com.anhquanha.passkeeper.model.User;
 
 public class MainApplication extends Application{
 
+    private static Context context;
     public static User userInfo;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        this.context = getApplicationContext();
     }
 
     public static void setUserInfo(User user){
@@ -24,4 +26,7 @@ public class MainApplication extends Application{
         return userInfo;
     }
 
+    public static Context getContext(){
+        return context;
+    }
 }

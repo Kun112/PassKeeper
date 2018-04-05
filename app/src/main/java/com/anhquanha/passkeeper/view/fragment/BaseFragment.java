@@ -1,5 +1,6 @@
 package com.anhquanha.passkeeper.view.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends android.support.v4.app.Fragment {
     Context context;
     int layoutId;
+    Activity activity;
 
     public abstract int getLayoutId();
 
@@ -31,6 +33,12 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = activity;
     }
 
     @Nullable

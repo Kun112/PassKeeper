@@ -12,8 +12,8 @@ import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
 import com.anhquanha.passkeeper.constant.FragmentID;
 import com.anhquanha.passkeeper.model.User;
-import com.anhquanha.passkeeper.view.LoginActivity;
-import com.anhquanha.passkeeper.view.MainActivity;
+import com.anhquanha.passkeeper.view.activity.LoginActivity;
+import com.anhquanha.passkeeper.view.activity.MainActivity;
 
 import butterknife.BindView;
 

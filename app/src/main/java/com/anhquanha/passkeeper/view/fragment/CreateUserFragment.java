@@ -1,6 +1,5 @@
 package com.anhquanha.passkeeper.view.fragment;
 
-import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,7 +9,7 @@ import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
 import com.anhquanha.passkeeper.constant.FragmentID;
 import com.anhquanha.passkeeper.model.User;
-import com.anhquanha.passkeeper.view.LoginActivity;
+import com.anhquanha.passkeeper.view.activity.LoginActivity;
 
 import butterknife.BindView;
 
@@ -49,7 +48,7 @@ public class CreateUserFragment extends BaseFragment {
     }
     @Override
     public int getLayoutId() {
-        return R.layout.create_account_fragment;
+        return R.layout.create_user_fragment;
     }
 
     @Override

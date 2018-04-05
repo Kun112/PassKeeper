@@ -12,6 +12,7 @@ public class Account {
     String ownerId;
     String createdAt;
 
+
     public Account(String id, String loginId, String password, String category, String ownerId, String createdAt) {
         this.id = id;
         this.loginId = loginId;

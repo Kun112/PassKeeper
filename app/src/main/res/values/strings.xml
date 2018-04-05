@@ -16,4 +16,9 @@
     <string name="blank_error">This field can not be blank!</string>
     <string name="my_account">Accounts</string>
     <string name="setting_tab">Settings</string>
+    <string name="id_create_account">ID</string>
+    <string name="pass_create_account">Password</string>
+    <string name="pass_again_create_account">Confirm your password</string>
+    <string name="category">Category</string>
+    <string name="create_account_btn_text">Create account</string>
 </resources>
