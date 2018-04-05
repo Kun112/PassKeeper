@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="@string/id_create_account"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/idNewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:text="@string/pass_create_account"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/passNewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:inputType="textPassword"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:text="@string/pass_again_create_account"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/confirmPassNewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:paddingTop="5dp"
+        android:inputType="textPassword"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/category"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/category_spinner"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_account_btn"
+        android:text="@string/create_account_btn_text"
+        android:background="@drawable/login_button_background"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

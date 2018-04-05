@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">PassKeeper</string>
+    <string name="welcome_text">Welcome to PassKeeper</string>
+    <string name="login">Login</string>
+    <string name="user_name_hint">User name</string>
+    <string name="id_hint">ID</string>
+    <string name="password_hint">Password</string>
+    <string name="create_new_account_text"><u>Not have an account yet? Create one!</u></string>
+    <string name="blank_id_error">The id field can not be blank.</string>
+    <string name="blank_pass_error">The password field can not be blank.</string>
+    <string name="confirm_password">Confirm your password</string>
+    <string name="not_corresponding_pass">Your confirmation password must be the same as your password</string>
+    <string name="used_account_error">This user is already created. Please choose a new id!</string>
+    <string name="create_user_success">Create user successfully!</string>
+    <string name="not_valid_user">The id or password is not correct. Please try again!</string>
+    <string name="blank_error">This field can not be blank!</string>
+    <string name="my_account">Accounts</string>
+    <string name="setting_tab">Settings</string>
+    <string name="id_create_account">ID</string>
+    <string name="pass_create_account">Password</string>
+    <string name="pass_again_create_account">Confirm your password</string>
+    <string name="category">Category</string>
+    <string name="create_account_btn_text">Create account</string>
 </resources>
