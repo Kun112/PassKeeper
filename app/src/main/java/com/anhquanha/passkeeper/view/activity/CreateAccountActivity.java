@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
+import com.anhquanha.passkeeper.model.Account;
 import com.anhquanha.passkeeper.util.DateUtil;
+import com.anhquanha.passkeeper.util.StringUtil;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,10 @@ public class CreateAccountActivity extends AppCompatActivity{
     TextView confirmPassTv;
     @BindView(R.id.category_spinner)
     Spinner categorySpinner;
+    @BindView(R.id.backBtn)
+    ImageView backBtn;
+    @BindView(R.id.fragmentNameTv)
+    TextView fragmentNameTv;
 
     ArrayList<String> categoryList = new ArrayList<>();
     ArrayAdapter<String> adapter ;
@@ -51,7 +58,15 @@ public class CreateAccountActivity extends AppCompatActivity{
         createAccountBtn.setOnClickListener(view -> {
             handleCreateButton();
         });
+        backBtn.setOnClickListener(v->{
+            finish();
+        });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fragmentNameTv.setText(StringUtil.getStringResource(R.string.create_account));
     }
 
     private void handleCreateButton() {
@@ -84,11 +99,13 @@ public class CreateAccountActivity extends AppCompatActivity{
 
         /** pass all case, now we create new account in SQLite database **/
         createNewAccount(id, password, category, MainApplication.getUserInfo().getId(), DateUtil.formatDateTime(System.currentTimeMillis()));
-        Toast.makeText(this, "Create success", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Create success", Toast.LENGTH_SHORT).show();
     }
 
     private void createNewAccount(String id, String password, String category, String idUser, String createdAt) {
-
+        Account account = new Account( id, password, category, MainApplication.getUserInfo().getId(), createdAt);
+        MainApplication.getDatabaseHandler().createAccount(account);
+        Toast.makeText(this, "Create new account successfully!", Toast.LENGTH_SHORT).show();
     }
 
     private void initCategoryData() {

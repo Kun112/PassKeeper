@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
-
+    <include layout="@layout/toolbar_fragment_layout"/>
     <TextView
         android:text="@string/id_create_account"
         android:layout_width="match_parent"

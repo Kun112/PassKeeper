@@ -3,6 +3,7 @@ package com.anhquanha.passkeeper;
 import android.app.Application;
 import android.content.Context;
 
+import com.anhquanha.passkeeper.asset.DatabaseHandler;
 import com.anhquanha.passkeeper.model.User;
 
 /**
@@ -12,11 +13,14 @@ import com.anhquanha.passkeeper.model.User;
 public class MainApplication extends Application{
 
     private static Context context;
-    public static User userInfo;
+    private static User userInfo;
+    private static DatabaseHandler databaseHandler;
+
     @Override
     public void onCreate() {
         super.onCreate();
         this.context = getApplicationContext();
+        databaseHandler = new DatabaseHandler(context);
     }
 
     public static void setUserInfo(User user){
@@ -28,5 +32,8 @@ public class MainApplication extends Application{
 
     public static Context getContext(){
         return context;
+    }
+    public static DatabaseHandler getDatabaseHandler(){
+        return databaseHandler;
     }
 }

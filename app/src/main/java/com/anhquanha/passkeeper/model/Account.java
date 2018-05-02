@@ -5,7 +5,7 @@ package com.anhquanha.passkeeper.model;
  */
 
 public class Account {
-    String id;
+    //String id;
     String loginId;
     String password;
     String category;
@@ -13,8 +13,8 @@ public class Account {
     String createdAt;
 
 
-    public Account(String id, String loginId, String password, String category, String ownerId, String createdAt) {
-        this.id = id;
+    public Account(String loginId, String password, String category, String ownerId, String createdAt) {
+        //this.id = id;
         this.loginId = loginId;
         this.password = password;
         this.category = category;
@@ -22,13 +22,13 @@ public class Account {
         this.createdAt = createdAt;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     public String getLoginId() {
         return loginId;

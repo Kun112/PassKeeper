@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.DatabaseHandler;
 import com.anhquanha.passkeeper.constant.FragmentID;
@@ -40,8 +41,6 @@ public class CreateUserFragment extends BaseFragment {
     String password = "";
     String confirmPassword = "";
 
-    DatabaseHandler databaseHandler;
-
     public static CreateUserFragment newInstance() {
 
         return new CreateUserFragment();
@@ -53,7 +52,6 @@ public class CreateUserFragment extends BaseFragment {
 
     @Override
     public void initView() {
-        databaseHandler = new DatabaseHandler(context);
         backBtn.setOnClickListener(v->{
             if(context instanceof LoginActivity)
                 ((LoginActivity) context).onBackPressed();
@@ -72,7 +70,7 @@ public class CreateUserFragment extends BaseFragment {
         confirmPassword = confirmPassTv.getText().toString();
         if(checkNewUserCondition(userName, idUser, password, confirmPassword)){
             /** create new user **/
-        databaseHandler.createUser(new User(idUser, userName, password));
+        MainApplication.getDatabaseHandler().createUser(new User(idUser, userName, password));
         showToast(context.getResources().getString(R.string.create_user_success));
         }
         else{
@@ -99,7 +97,7 @@ public class CreateUserFragment extends BaseFragment {
             confirmPassTv.setError(context.getResources().getString(R.string.not_corresponding_pass));
             return false;
         }
-        if(databaseHandler.checkExistUser(idUser)){
+        if(MainApplication.getDatabaseHandler().checkExistUser(idUser)){
             idUserTv.setError(context.getResources().getString(R.string.used_account_error));
             showToast(context.getResources().getString(R.string.used_account_error));
             return false;

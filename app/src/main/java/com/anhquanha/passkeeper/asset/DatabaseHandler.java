@@ -11,6 +11,9 @@ import com.anhquanha.passkeeper.constant.Const;
 import com.anhquanha.passkeeper.model.Account;
 import com.anhquanha.passkeeper.model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by anhquan.ha on 3/7/2018.
  */
@@ -55,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + USER_PASS_KEY + " TEXT" + ")";
 
         String CREATE_ACCOUNT_TABLE = "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + ACCOUNT_ID_KEY + " TEXT PRIMARY KEY,"
+                + ACCOUNT_ID_KEY + " TEXT PRIMARY KEY AUTOINCREMENT,"
                 + ACCOUNT_LOGINID_KEY + " TEXT,"
                 + ACCOUNT_PASS_KEY + " TEXT,"
                 + ACCOUNT_CATEGORY_KEY + " TEXT,"
@@ -124,7 +127,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(ACCOUNT_ID_KEY, account.getId());
+        //values.put(ACCOUNT_ID_KEY, account.getId());
         values.put(ACCOUNT_LOGINID_KEY, account.getLoginId());
         values.put(ACCOUNT_PASS_KEY, account.getPassword());
         values.put(ACCOUNT_CATEGORY_KEY, account.getCategory());
@@ -133,6 +136,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.insert(ACCOUNT_TABLE, null, values);
         db.close();
+    }
+
+    public List<Account> getAccountsDependOnOwner(String ownerId){
+        List<Account> accountList = new ArrayList<>();
+        String query = "SELECT * FROM " + ACCOUNT_TABLE + " WHERE " + ACCOUNT_OWNERID_KEY + "= '"+ ownerId + "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+
+        while(cursor.isAfterLast() == false) {
+            Account student = new Account(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4));
+            accountList.add(student);
+            cursor.moveToNext();
+        }
+        return accountList;
     }
 
 

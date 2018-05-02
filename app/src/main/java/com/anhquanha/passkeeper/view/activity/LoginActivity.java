@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.loginLinearLay)
     LinearLayout startingLoginlayout;
 
-    DatabaseHandler databaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
 
-        databaseHandler = new DatabaseHandler(this);
         accountLoginBtn.setOnClickListener(v->{
             startingLoginlayout.setVisibility(View.INVISIBLE);
             //openLoginScreen();

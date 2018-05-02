@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activity.CreateAccountActivity"></activity>
+        <activity android:name=".view.activity.CreateAccountActivity" android:theme="@style/AppTheme.NoToolbar">
+        </activity>
     </application>
 
 </manifest>

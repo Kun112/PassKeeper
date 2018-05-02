@@ -2,8 +2,40 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@drawable/background_recycler_item"
+    android:layout_margin="5dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/categoryTv"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PC/Desktop"/>
+    <TextView
+        android:id="@+id/idAccountTv"
+        android:text="anhquan"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/passAccountTv"
+        android:text="anhquan123"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/timeAccountTv"
+        android:text="Last edit 01/12/1996"
+        android:gravity="right"
+        android:textStyle="italic"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
