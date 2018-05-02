@@ -3,7 +3,9 @@ package com.anhquanha.passkeeper.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.anhquanha.passkeeper.MainApplication;
@@ -42,18 +44,20 @@ public class AccountsFragment extends BaseFragment {
         addAccountBtn.setOnClickListener(v->{
             startActivity(new Intent(activity, CreateAccountActivity.class));
         });
-        loadAccountsData();
+        //loadAccountsData();
     }
 
     private void loadAccountsData() {
         listAccount = MainApplication.getDatabaseHandler().getAccountsDependOnOwner(MainApplication.getUserInfo().getId());
         adapter = new AccountAdapter(context, listAccount);
         accountRv.setAdapter(adapter);
+        accountRv.setLayoutManager(new LinearLayoutManager(context));
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        loadAccountsData();
     }
 
     @Override

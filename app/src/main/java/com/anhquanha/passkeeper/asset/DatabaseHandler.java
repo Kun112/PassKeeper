@@ -146,9 +146,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
 
-        while(cursor.isAfterLast() == false) {
-            Account student = new Account(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4));
-            accountList.add(student);
+        while(!cursor.isAfterLast()) {
+            Account account = new Account(cursor.getString(cursor.getColumnIndex(ACCOUNT_LOGINID_KEY)),
+                    cursor.getString(cursor.getColumnIndex(ACCOUNT_PASS_KEY)),
+                    cursor.getString(cursor.getColumnIndex(ACCOUNT_CATEGORY_KEY)),
+                    cursor.getString(cursor.getColumnIndex(ACCOUNT_OWNERID_KEY)),
+                    cursor.getString(cursor.getColumnIndex(ACCOUNT_CREATEAT_KEY)));
+            //Account account = new Account(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4));
+            accountList.add(account);
             cursor.moveToNext();
         }
         return accountList;
