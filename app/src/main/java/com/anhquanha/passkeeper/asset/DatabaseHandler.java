@@ -58,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + USER_PASS_KEY + " TEXT" + ")";
 
         String CREATE_ACCOUNT_TABLE = "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + ACCOUNT_ID_KEY + " TEXT PRIMARY KEY AUTOINCREMENT,"
+                + ACCOUNT_ID_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ACCOUNT_LOGINID_KEY + " TEXT,"
                 + ACCOUNT_PASS_KEY + " TEXT,"
                 + ACCOUNT_CATEGORY_KEY + " TEXT,"

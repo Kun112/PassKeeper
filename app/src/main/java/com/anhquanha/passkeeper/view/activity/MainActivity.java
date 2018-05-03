@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
+import com.anhquanha.passkeeper.asset.SharePrefer;
 import com.anhquanha.passkeeper.util.StringUtil;
 import com.anhquanha.passkeeper.view.fragment.AccountsFragment;
 import com.anhquanha.passkeeper.view.fragment.BaseFragment;
@@ -38,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        putDataToSharePrefer();
+
         userNameHeaderTv = navigationView.findViewById(R.id.header_username_tv);
 
         accountsFragment = AccountsFragment.newInstance();
         settingFragment = SettingFragment.newInstance();
-        //userNameHeaderTv.setText("Hi " + MainApplication.getUserInfo().getUsername());
+        //userNameHeaderTv.setText("Hi " + MainApplication.getUserName().getUsername());
         navigationView.setNavigationItemSelectedListener(item -> {
             item.setChecked(true);
             drawerLayout.closeDrawers();
@@ -65,8 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void putDataToSharePrefer() {
+        SharePrefer.getInstance().putLoginStatus(true);
+        SharePrefer.getInstance().putUserName(MainApplication.getUserInfo().getUsername());
+        SharePrefer.getInstance().putCurrentIdUser(MainApplication.getUserInfo().getId());
+    }
+
     private void showLogoutConfirmationDialog() {
-        //DialogUtil.showLogOutConfirmationDialog(this);
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.custom_dialog);
 
@@ -76,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         titleDialog.setText(StringUtil.getStringResource(R.string.log_out_confirm));
         okButtonDialog.setOnClickListener(v->{
+            cleanData();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         });
@@ -85,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
+    }
+
+    private void cleanData() {
+        SharePrefer.getInstance().putLoginStatus(false);
+        SharePrefer.getInstance().putUserName("");
+        SharePrefer.getInstance().putCurrentIdUser("");
     }
 
     private void pushStartingFragment() {

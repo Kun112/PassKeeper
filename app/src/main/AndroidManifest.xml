@@ -14,13 +14,17 @@
 
         </activity>
         <activity android:name=".view.activity.LoginActivity" android:theme="@style/AppTheme.NoToolbar">
+
+        </activity>
+
+        <activity android:name=".view.activity.CreateAccountActivity" android:theme="@style/AppTheme.NoToolbar">
+        </activity>
+        <activity android:name=".view.activity.ReloginActivity" android:theme="@style/AppTheme.NoToolbar"/>
+        <activity android:name=".view.activity.SplashActivity" android:theme="@style/AppTheme.NoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".view.activity.CreateAccountActivity" android:theme="@style/AppTheme.NoToolbar">
         </activity>
     </application>
 
