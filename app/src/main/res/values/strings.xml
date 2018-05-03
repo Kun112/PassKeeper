@@ -22,4 +22,6 @@
     <string name="category">Category</string>
     <string name="create_account_btn_text">Create account</string>
     <string name="create_account">Create account</string>
+    <string name="log_out">Log out</string>
+    <string name="log_out_confirm">Are you sure you want to log out?</string>
 </resources>

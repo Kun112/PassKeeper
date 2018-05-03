@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.anhquanha.passkeeper.R;
 
@@ -16,7 +17,6 @@ import com.anhquanha.passkeeper.R;
 
 public class DialogUtil {
     private static Dialog progressDialog;
-
     public static void showProgressDialog(Context context){
         if(progressDialog != null && progressDialog.isShowing())
             return;
@@ -44,4 +44,25 @@ public class DialogUtil {
         progressDialog.dismiss();
         progressDialog = null;
     }
+
+    public static void showLogOutConfirmationDialog(Context context){
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.custom_dialog);
+
+        TextView titleDialog = dialog.findViewById(R.id.title_dialog);
+        TextView okButtonDialog = dialog.findViewById(R.id.yesTv);
+        TextView cancelButtonDialog = dialog.findViewById(R.id.noTv);
+
+        titleDialog.setText(StringUtil.getStringResource(R.string.log_out_confirm));
+        okButtonDialog.setOnClickListener(v->{
+
+        });
+        cancelButtonDialog.setOnClickListener(v->{
+            dialog.dismiss();
+        });
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
+
 }
