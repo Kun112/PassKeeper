@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.adapter.AccountAdapter;
+import com.anhquanha.passkeeper.callback.OnAccountItemClickListener;
 import com.anhquanha.passkeeper.constant.FragmentID;
 import com.anhquanha.passkeeper.model.Account;
 import com.anhquanha.passkeeper.view.activity.CreateAccountActivity;
@@ -24,7 +29,7 @@ import butterknife.BindView;
  * Created by anhquan.ha on 3/26/18.
  */
 
-public class AccountsFragment extends BaseFragment {
+public class AccountsFragment extends BaseFragment implements OnAccountItemClickListener {
     @BindView(R.id.fragmentName)
     TextView fragmentNameTv;
     @BindView(R.id.addAccountBtn)
@@ -41,6 +46,7 @@ public class AccountsFragment extends BaseFragment {
 
     @Override
     public void initView() {
+        registerForContextMenu(accountRv);
         addAccountBtn.setOnClickListener(v->{
             startActivity(new Intent(activity, CreateAccountActivity.class));
         });
@@ -49,7 +55,7 @@ public class AccountsFragment extends BaseFragment {
 
     private void loadAccountsData() {
         listAccount = MainApplication.getDatabaseHandler().getAccountsDependOnOwner(MainApplication.getUserInfo().getId());
-        adapter = new AccountAdapter(context, listAccount);
+        adapter = new AccountAdapter(context, listAccount, this);
         accountRv.setAdapter(adapter);
         accountRv.setLayoutManager(new LinearLayoutManager(context));
     }
@@ -59,6 +65,7 @@ public class AccountsFragment extends BaseFragment {
         super.onResume();
         loadAccountsData();
     }
+
 
     @Override
     public void changeToolbarTitle() {
@@ -72,5 +79,16 @@ public class AccountsFragment extends BaseFragment {
 
     public static AccountsFragment newInstance() {
         return new AccountsFragment();
+    }
+
+
+    @Override
+    public void onEditAccount(Account account) {
+
+    }
+
+    @Override
+    public void onDeleteAccount(Account account) {
+        //MainApplication.getDatabaseHandler().deleteAccount(account.ge);
     }
 }

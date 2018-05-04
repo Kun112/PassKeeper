@@ -46,35 +46,7 @@ public class DateUtil {
         }
     }
 
-    public synchronized  static String getTimeAgo(long time) {
-        if (time < 1000000000000L) {
-            // if timestamp given in seconds, convert to millis
-            time *= 1000;
-        }
 
-        long now = System.currentTimeMillis();
-        if (time > now || time <= 0) {
-            return null;
-        }
-
-        // TODO: localize
-        final long diff = now - time;
-        if (diff < MINUTE_MILLIS) {
-            return "Juste maintenant";
-        } else if (diff < 2 * MINUTE_MILLIS) {
-            return "Il y a 1 minute";
-        } else if (diff < 50 * MINUTE_MILLIS) {
-            return "Il y a " + diff / MINUTE_MILLIS + " minutes";
-        } else if (diff < 90 * MINUTE_MILLIS) {
-            return "Il y a 1 heure";
-        } else if (diff < 24 * HOUR_MILLIS) {
-            return "Il y a " + diff / HOUR_MILLIS + " heure";
-        } else if (diff < 48 * HOUR_MILLIS) {
-            return "Hier";
-        } else {
-            return "Il y a " + diff / DAY_MILLIS + " jours";
-        }
-    }
 
     public synchronized static String getDateTime(long time) {
         Date date = new Date(time); // *1000 is to convert seconds to milliseconds

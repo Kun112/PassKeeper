@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anhquanha.passkeeper.MainApplication;
 import com.anhquanha.passkeeper.R;
 import com.anhquanha.passkeeper.asset.SharePrefer;
 import com.anhquanha.passkeeper.model.User;
+import com.anhquanha.passkeeper.util.StringUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +62,8 @@ public class ReloginActivity extends AppCompatActivity {
             MainApplication.setUserInfo(user);
             startActivity(new Intent(ReloginActivity.this, MainActivity.class));
             finish();
+        }else{
+            Toast.makeText(this, StringUtil.getStringResource(R.string.not_corresponding_pass), Toast.LENGTH_SHORT).show();
         }
     }
 }

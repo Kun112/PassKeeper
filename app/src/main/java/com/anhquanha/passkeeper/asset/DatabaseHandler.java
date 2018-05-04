@@ -38,7 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Account table columns names
     private static final String ACCOUNT_ID_KEY = "id";
     private static final String ACCOUNT_LOGINID_KEY = "loginId";
-    private static final String ACCOUNT_PASS_KEY  = "password";
+    private static final String ACCOUNT_PASS_KEY = "password";
     private static final String ACCOUNT_CATEGORY_KEY = "category";
     private static final String ACCOUNT_OWNERID_KEY = "ownerId";
     private static final String ACCOUNT_CREATEAT_KEY = "createdAt";
@@ -82,7 +82,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void createUser(User user){
+    public void createUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -95,14 +95,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public User getUser(String idUser){
+    public User getUser(String idUser) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(USER_TABLE, null, USER_ID_KEY+ " = ?", new String[] { String.valueOf(idUser) },null, null, null);
+        Cursor cursor = db.query(USER_TABLE, null, USER_ID_KEY + " = ?", new String[]{String.valueOf(idUser)}, null, null, null);
 
-        if(cursor != null) {
+        if (cursor != null) {
             cursor.moveToFirst();
-        }else{
+        } else {
             return null;
         }
         User student = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2));
@@ -111,19 +111,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public boolean checkExistUser(String idUser){
+    public boolean checkExistUser(String idUser) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
-        String checkQuery = "SELECT " + USER_ID_KEY + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '"+ idUser + "'";
-        cursor= db.rawQuery(checkQuery,null);
+        String checkQuery = "SELECT " + USER_ID_KEY + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '" + idUser + "'";
+        cursor = db.rawQuery(checkQuery, null);
         boolean exists = (cursor.getCount() > 0);
         cursor.close();
         db.close();
         return exists;
     }
 
-    public void createAccount(Account account){
+    public void createAccount(Account account) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -138,15 +138,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Account> getAccountsDependOnOwner(String ownerId){
+    public List<Account> getAccountsDependOnOwner(String ownerId) {
         List<Account> accountList = new ArrayList<>();
-        String query = "SELECT * FROM " + ACCOUNT_TABLE + " WHERE " + ACCOUNT_OWNERID_KEY + "= '"+ ownerId + "'";
+        String query = "SELECT * FROM " + ACCOUNT_TABLE + " WHERE " + ACCOUNT_OWNERID_KEY + "= '" + ownerId + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
 
-        while(!cursor.isAfterLast()) {
+        while (!cursor.isAfterLast()) {
             Account account = new Account(cursor.getString(cursor.getColumnIndex(ACCOUNT_LOGINID_KEY)),
                     cursor.getString(cursor.getColumnIndex(ACCOUNT_PASS_KEY)),
                     cursor.getString(cursor.getColumnIndex(ACCOUNT_CATEGORY_KEY)),
@@ -162,13 +162,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public User getSinlgeEntry(String userId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String checkQuery = "SELECT " + "*" + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '"+ userId + "'";
+        String checkQuery = "SELECT " + "*" + " FROM " + USER_TABLE + " WHERE " + USER_ID_KEY + "= '" + userId + "'";
         Cursor cursor = null;
-        cursor= db.rawQuery(checkQuery,null);
+        cursor = db.rawQuery(checkQuery, null);
         if (cursor.getCount() < 1) // UserName Not Exist
         {
             return null;
-        }else{
+        } else {
             cursor.moveToFirst();
             //String password = cursor.getString(cursor.getColumnIndex(USER_PASS_KEY));
             String password = cursor.getString(2);
@@ -177,7 +177,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return new User(userId, userName, password);
 
         }
+    }
 
+    public void deleteAccount(int accountId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ACCOUNT_TABLE, ACCOUNT_ID_KEY + " = ?", new String[]{String.valueOf(accountId)});
+        db.close();
     }
 
 }
